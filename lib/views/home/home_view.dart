@@ -22,9 +22,10 @@ class _HomeViewState extends State<HomeView> {
   List<String> frequency = [
     "All",
     "Friction",
-
-
-  "Engineering","Thriller","Comedy",];
+    "Engineering",
+    "Thriller",
+    "Comedy",
+  ];
   int selectedIndex = -1;
 
   @override
