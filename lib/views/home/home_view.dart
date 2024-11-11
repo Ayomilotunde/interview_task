@@ -22,9 +22,9 @@ class _HomeViewState extends State<HomeView> {
   List<String> frequency = [
     "All",
     "Friction",
-  ];
 
-  // "Engineering","Thriller","Comedy",];
+
+  "Engineering","Thriller","Comedy",];
   int selectedIndex = -1;
 
   @override
@@ -55,43 +55,45 @@ class _HomeViewState extends State<HomeView> {
                 textColor: AppTheme.black,
               ),
               YMargin(16.h),
-              Container(
-                height: 33,
-                // padding: const EdgeInsets.all(4,),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: frequency.map((e) {
-                    int index = frequency.indexOf(e);
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 8,
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  // height: 33,
+                  // padding: const EdgeInsets.all(4,),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: frequency.map((e) {
+                      int index = frequency.indexOf(e);
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: selectedIndex == index
+                                ? const Color(0xFF000000).withOpacity(.07)
+                                : const Color(0xFF000000).withOpacity(.05),
+                          ),
+                          child: CustomOpenSansText(
+                            text: e,
+                            fontWeight: FontWeight.w400,
+                            textSize: 14.sp,
+                            textColor: AppTheme.black,
+                          ),
                         ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: selectedIndex == index
-                              ? const Color(0xFF000000).withOpacity(.07)
-                              : const Color(0xFF000000).withOpacity(.05),
-                        ),
-                        child: CustomOpenSansText(
-                          text: e,
-                          fontWeight: FontWeight.w400,
-                          textSize: 14.sp,
-                          textColor: AppTheme.black,
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
               YMargin(18.h),
